@@ -1,0 +1,40 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="MF-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello {{fullName}}</h2>
+    <input type="text" value={{firstName::input}}>
+    <h2>[[lastName]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'MF-app',
+
+      properties: {
+        firstName: {
+          type: String,
+          value: 'John',
+        },
+        lastName: {
+            type: String,
+            value: 'Shepard',
+        },
+        fullName: {
+            type: String,
+            computed: 'computeFullName(firstName, lastName)',
+        },
+      },
+    computeFullName: function(firstName, lastName){
+        return firstName + " " + lastName;
+    },
+
+    });
+  </script>
+</dom-module>
